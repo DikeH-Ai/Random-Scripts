@@ -27,6 +27,7 @@ def main():
         "list-done": list_done,
         "list-not-done": list_todo,
         "list-in-progress": list_in_progress,
+        "--help": helper,
     }
     if user_input[0] not in dict_func:
         print("Error: Invalid operation")
@@ -325,5 +326,31 @@ def  list_in_progress(args_list, json_file):
     
     except Exception as e:
         print(f"Error(todo): {str(e)}")  
+
+# helper function
+def helper(*args):
+    print("""
+./task-tracker --help # list of all available commands
+
+# To add a task
+./task-tracker add "Buy groceries"
+
+# To update a task
+./task-tracker update 1 "Buy groceries and cook dinner"
+
+# To delete a task
+./task-tracker delete 1
+
+# To mark a task as in progress/done/todo
+./task-tracker mark-in-progress 1
+./task-tracker mark-done 1
+./task-tracker mark-todo 1
+
+# To list all tasks
+./task-tracker list
+./task-tracker list done
+./task-tracker list todo
+./task-tracker list in-progress
+""")
 if __name__ == "__main__":
     main()
