@@ -21,7 +21,7 @@ The tasks are stored in a JSON file. The app can:
 1. **Clone the repository**:
    git clone https://github.com/DikeH-Ai/Python-projects.git
    
-   cd Python-projects/task-tracker
+   cd Python-projects/
 
 2. **Make the script executable**:
     chmod +x task-tracker.py
