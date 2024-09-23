@@ -1,6 +1,6 @@
 # Python Projects: 
 
-# Task Tracker
+# Task Tracker: https://roadmap.sh/projects/task-tracker
 
 Task Tracker is a simple command-line interface (CLI) application that helps you track and manage tasks. You'll practice working with the filesystem, handling user inputs, and building a basic CLI application.
 
@@ -18,7 +18,7 @@ The tasks are stored in a JSON file. The app can:
 ## How to Run
 
 1. **Clone the repository**:
-   git clone 
+   git clone https://github.com/DikeH-Ai/Python-projects.git
    cd Python-projects/task-tracker
 
 2. **Make the script executable**:
