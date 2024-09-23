@@ -4,7 +4,25 @@ import sys, requests, json
 def main():
     # helper
     print("""
-# inlcude helper text here
+Usage:
+1. Command-line mode:
+   You can provide the GitHub username directly when running the script:
+   $ python github_activity.py <username>
+
+2. Interactive mode:
+   If no username is provided via the command line, the program will prompt you to input a GitHub username.
+
+Commands:
+- Enter a valid GitHub username to see their recent activity.
+- Type 'quit' to exit the program at any time.
+
+Events Tracked:
+- Starred Repositories (WatchEvent)
+- Pushes (PushEvent)
+- Forks (ForkEvent)
+- Pull Requests (PullRequestEvent)
+- Issues (IssueEvent)
+- Issue Comments (IssueCommentEvent)
 """)
 
     # program loop
@@ -23,7 +41,7 @@ def get_event(argument):
     if argument == "quit":
         print("Exiting program.......")
         sys.exit()
-    api_url = f"https://api.github.com/{argument}/events/public"
+    api_url = f"https://api.github.com/users/{argument}/events/public"
     try:
         # get json data
         response = requests.get(api_url)
@@ -43,7 +61,7 @@ def get_event(argument):
             py_object = response.json()
             # based on event type call a function
             for event in py_object:
-                if event in dict_func:
+                if event["type"] in dict_func:
                     dict_func[event["type"]](event)
         else:
             print(response.status_code)
