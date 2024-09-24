@@ -3,8 +3,7 @@
 # Task Tracker: 
 https://roadmap.sh/projects/task-tracker
 
-Task Tracker is a simple command-line interface (CLI) application that helps you track and manage tasks. You'll practice working with the filesystem, handling user inputs, and building a basic CLI application.
-
+Task Tracker is a simple command-line interface (CLI) application that helps you track and manage tasks.
 ## Features
 - Add, update, and delete tasks
 - Mark tasks as "In Progress" or "Done"
@@ -12,7 +11,6 @@ Task Tracker is a simple command-line interface (CLI) application that helps you
 - Filter tasks by status: done, not done, in progress
 
 ## Requirements
-The tasks are stored in a JSON file. The app can:
 - Add, update, and delete tasks
 - List tasks by their status (all, done, in progress, not done)
 
@@ -43,3 +41,40 @@ The tasks are stored in a JSON file. The app can:
 
 8. **List Completed Tasks**:
     ./task-tracker list --done
+
+
+# Github Yser Activity CLI:
+https://roadmap.sh/projects/github-user-activity
+
+Github User Activity is a simple CLI tool for monitoring specific user activities.
+
+## Feature
+- Prouduce a user friendly output for each of these events:
+    - Starred Repositories (WatchEvent)
+    - Pushes (PushEvent)
+    - Forks (ForkEvent)
+    - Pull Requests (PullRequestEvent)
+    - Issues (IssueEvent)
+    - Issue Comments (IssueCommentEvent)
+
+## Requirements
+- Provide the GitHub username as an argument when running the CLI.
+- Fetch the recent activity of the specified GitHub user using the GitHub API.
+- Display the fetched activity in the terminal.
+
+## How to Run
+
+1. **Clone the repository**:
+   git clone https://github.com/DikeH-Ai/Python-projects.git
+
+- **Optional**:
+    - make file executable
+    chmod +x github-usr-activity.py
+
+2. **Run file**
+    - option 1:
+        - pass CLI argument
+        python github-usr-activity.py <username>
+        
+        - pass argument within file operation
+        python github-usr-activity.py
