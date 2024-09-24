@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import sys, requests, json
+import sys, requests
 
 def main():
     # helper
@@ -10,6 +10,7 @@ Usage:
    $ python github_activity.py <username>
 
 2. Interactive mode:
+   chmod +x github_activity.py
    If no username is provided via the command line, the program will prompt you to input a GitHub username.
 
 Commands:
