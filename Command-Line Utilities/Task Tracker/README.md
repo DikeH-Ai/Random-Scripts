@@ -11,7 +11,7 @@ Task Tracker is a simple command-line interface (CLI) application that helps you
 ## How to Run
 
 1. **Clone the repository**:
-   git clone 
+   git clone https://github.com/DikeH-Ai/Python-projects.git
    
    cd Python-projects/
 

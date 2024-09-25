@@ -20,7 +20,7 @@ Github User Activity is a simple CLI tool for monitoring user activities.
 ## How to Run
 
 1. **Clone the repository**:
-   git clone 
+   git clone https://github.com/DikeH-Ai/Python-projects.git
 
 - **Optional**:
     - make file executable
