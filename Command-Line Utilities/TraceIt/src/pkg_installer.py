@@ -2,15 +2,15 @@ import sys
 import subprocess
 
 try:  # On import error install setuptools package
-    import pkg_resources
+    import pkg_resources  # type: ignore
 except ImportError:
     subprocess.check_call(
         [sys.executable, "-m", "pip", "install", "setuptools"])
 
-import pkg_resources
+import pkg_resources  # type: ignore
 
 
-def main() -> None:
+def pkg_installer() -> None:
     filename = "./requirements.txt"
     lines = None
     try:
@@ -27,7 +27,7 @@ def main() -> None:
             try:
                 # check if each package is already installed
                 pkg_resources.get_distribution(package_name)
-                print(f"{package_name} is already installed\n Skipping......")
+                print(f"{package_name} is already installed")
 
             except pkg_resources.DistributionNotFound as e:
                 print(f"{package_name} not installed\nInstalling......")
@@ -42,4 +42,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    pkg_installer()
