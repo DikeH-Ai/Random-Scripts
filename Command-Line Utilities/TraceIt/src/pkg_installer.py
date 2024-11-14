@@ -11,6 +11,9 @@ import pkg_resources  # type: ignore
 
 
 def pkg_installer() -> None:
+    """
+        Automatic package installation
+    """
     filename = "./requirements.txt"
     lines = None
     try:
@@ -22,6 +25,7 @@ def pkg_installer() -> None:
 
         if not lines:  # package list is empty
             print("Info: No packages")
+            return
 
         for package_name in lines:
             try:
