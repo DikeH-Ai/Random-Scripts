@@ -48,10 +48,10 @@ def question_timer() -> bool:
 
         return answers[0]
     except Exception as e:
-        print(f"An error has occured(func: set_timer): {str(e)}")
+        print(f"An error has occured(func: question_timer): {str(e)}")
 
 
-def custom_parameters():
+def custom_parameters() -> dict:
     """
         Setup;
             "Geographic Location":
@@ -79,17 +79,25 @@ def custom_parameters():
             "image_url": None,
             "api_key": "secret_api_key"
         }
-        question = [
-            inquirer.List('settings',
-                          message="Select Settings",
-                          choices=[None, "Geographic Location", "Localization", "Pagination", "Advanced Parameters", "Advanced Filters", "SerpApi Parameters"]),
-        ]
-        answers = inquirer.prompt(question)
+        while True:
+            question = [
+                inquirer.List("settings",
+                              message="Select Settings",
+                              choices=["Exit", "Geographic Location", "Localization", "Pagination", "Advanced Parameters", "Advanced Filters", "SerpApi Parameters"]),
+            ]
+            answers = inquirer.prompt(question)
 
-        pprint(answers)
-        parameters.update(answers["settings"]())
+            if answers["settings"] == "Exit":
+                print("Exiting Custom settings")
+                break
+            else:
+                pprint(answers)
+                data = func_dict[answers["settings"]]()
+                if data:
+                    parameters.update(data)
+        return parameters
     except Exception as e:
-        print(f"An error has occured(func: set_timer): {str(e)}")
+        print(f"An error has occured(func: custom_parameters): {str(e)}")
 
 
 def default_parameters() -> dict:
@@ -112,44 +120,49 @@ def default_parameters() -> dict:
 
 def geo_location() -> dict:
     try:
-        question = [
-            inquirer.List('option', message="Select Settings: ",
-                          choices=["location", "uule"])
-        ]
-        answers = inquirer.prompt(question)
-
-        if answers["option"] == "location":
-            # get location list
-            locations = []
-            with open("./data/locations_list.txt", "r",  encoding="utf-8") as file:
-                locations = file.readlines()
-            locations = [location.strip() for location in locations]
-
-            question1 = [
-                inquirer.Text(
-                    'location', message="Location(Enter for None)", default=None)
+        while True:
+            question = [
+                inquirer.List('option', message="Select Settings: ",
+                              choices=["location", "uule", "Go back"])
             ]
+            answers = inquirer.prompt(question)
 
-            input_text = inquirer.prompt(question1)
-            matches = get_top_matches(input_text["location"], locations)
-            matches = [match[0] for match in matches]
-            matches.append(None)
-            question2 = [
-                inquirer.List(
-                    'locations', message="Select Location", choices=matches)
-            ]
-            selected_loc = inquirer.prompt(question2)
-            return selected_loc
-        else:
-            questions = [
-                inquirer.Text('uule',
-                              message="Input uule: "),
-            ]
+            if answers["option"] == "location":
+                # get location list
+                locations = []
+                with open("./data/locations_list.txt", "r",  encoding="utf-8") as file:
+                    locations = file.readlines()
+                locations = [location.strip() for location in locations]
 
-            uule_dict = inquirer.prompt(questions)
-            return uule_dict
+                question1 = [
+                    inquirer.Text(
+                        'location', message="Location(Enter for None)", default=None)
+                ]
+
+                input_text = inquirer.prompt(question1)
+                matches = get_top_matches(input_text["location"], locations)
+                matches = [match[0] for match in matches]
+                matches.append(None)
+                question2 = [
+                    inquirer.List(
+                        'locations', message="Select Location", choices=matches)
+                ]
+
+                selected_loc = inquirer.prompt(question2)
+                if selected_loc["locations"]:
+                    return selected_loc
+            elif answers["option"] == "Go back":
+                break
+            else:
+                questions = [
+                    inquirer.Text('uule',
+                                  message="Input uule: "),
+                ]
+
+                uule_dict = inquirer.prompt(questions)
+                return uule_dict
     except Exception as e:
-        print(f"An error has occured: {str(e)}")
+        print(f"An error has occured(func: geo_location): {str(e)}")
         return
 
 # Function to get the top 10 closest matches using fuzzywuzzy
@@ -161,12 +174,11 @@ def get_top_matches(user_input, location_list, top_n=10):
 
 
 if __name__ == "__main__":
-    # choice = question_timer()
-    # pprint(choice)
-    # if choice:
-    #     parameters = custom_parameters()
-    # else:
-    #     parameters = default_parameters()
-    location = geo_location()
-    print(location)
+    choice = question_timer()
+    pprint(choice)
+    if choice:
+        parameters = custom_parameters()
+    else:
+        parameters = default_parameters()
+    print(parameters)
     # result_json = serp_search(parameters)
