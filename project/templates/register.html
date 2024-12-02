@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<!-- sign up form -->
+    <h1> Sign Up</h1>
+    <form action="/register" method="post">
+        <div class="form-floating mb-3 link-dark" style="width: 50%;">
+            <input type="text" name="name" class="form-control" id="floatingInput" placeholder="John Doe">
+            <label for="floatingInput">Name</label>
+        </div>
+        <div class="form-floating mb-3 link-dark" style="width: 50%;">
+            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating link-dark" style="width: 50%;">
+            <input type="password"  name="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-floating link-dark" style="width: 50%; margin-top: 10px; margin-bottom: 10px">
+            <input type="password"  name="pass-repeat" class="form-control" id="floatingconfirmPassword" placeholder="Confirm Password">
+            <label for="floatingconfirmPassword">Confirm Password</label>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-secondary btn d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 20px; margin-bottom: 20px;">Submit</button>
+        </div>
+    </form>
+{% endblock %}

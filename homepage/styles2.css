@@ -1,0 +1,33 @@
+/* style the body of the website*/
+body{
+    background-image: url("img/aboutbg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+/* style all the h1 tags */
+h1{
+    padding:0px;
+    padding-top: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 45px
+}
+/* creating a line*/
+hr{
+    border: 5px solid #000;
+    border-radius: 5px;
+}
+/* style the h1 tag in main*/
+main h1{
+    padding-top: 0px;
+    text-align: left;
+}
+/* style all paragraph tags*/
+p{
+    padding:10;
+    text-align: left;
+    color: #fff;
+    font-size: 20px
+}

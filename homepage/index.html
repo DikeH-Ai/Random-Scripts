@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>CS50 SHoppy</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+      <!--Header which includes the navigatiion bar and the top buttons-->
+        <header>
+            <div class = 'bar'>
+                <span>
+                  <!--link to google map location-->
+                  <a href="https://www.google.com/maps/place/Harvard+University/@42.3770068,-71.1188488,17z/data=!3m1!4b1!4m5!3m4!1s0x89e377427d7f0199:0x5937c65cee2427f0!8m2!3d42.3770029!4d-71.1166601">
+                    <button class = 'button-bar' type="button" onclick="">
+                      <!--imported icon-->
+                      <img class='barimg' src="https://i.postimg.cc/7LzrYt8G/location-pin-026-removebg-preview.png" alt = "Location Icon">
+                      <p style='display:inline-block;'>Location</p>
+                    </button>
+                  </a>
+                </span>
+                <span>
+                  <!--A generated mailto link-->
+                  <a href="mailto:heads@cs50.harvard.edu">
+                    <button class = 'button-bar' type="button" >
+                      <!--imported icon-->
+                      <img class='barimg' src="https://i.postimg.cc/C1j0Hg9c/icon0-vector-461-01-removebg-preview.png" alt = "Email">
+                      <p style='display:inline-block;'>Email</p>
+                    </button>
+                  </a>
+                </span>
+                <span>
+                  <!--Onclick event calls an alert-->
+                  <button class = "button-bar"type="button" onclick="alert('(512) 868-8168')">
+                    <img class='barimg' src="https://i.postimg.cc/hv1x3S5p/165-1652075-telephone-icon-png-transparent-contact-us-icon-png-removebg-preview.png" alt = "Mobile Number">
+                    <p style='display:inline-block;'>Mobile Number</p>
+                  </button>
+                </span>
+            </div>
+            <!--bootstrap navigation bar-->
+            <nav class = 'navbar navbar-expand-sm bg-dark navbar-dark'>
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#" alt="logo"><img src="https://i.postimg.cc/Dz4WNwKV/140311191934-04-memes-restricted-removebg-preview.png"  class="rounded-pill" alt="Logo" style="width:100px;"><p class="shoppy" style="display:inline-block">CS50 shoppy</p></a>
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="howitworks.html">How it works</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="photoalbum.html">Photo album</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+        </header>
+        <!--The main content-->
+        <div class="content">
+          <h2>Buy All Cs50 Merchandise <br> On ShoppY</h2>
+          <p>SHoppy is the most trusted website<br>To buy Your Custom MERCH</p>
+          </div>
+          <!--form onsubmit event calls the function-->
+           <form onsubmit="myFunction(event)" id="merch">
+            <label class="content" for="merch">What would you like to buy?</label>
+            <!--list of products-->
+            <select id="products" name="merch list">
+              <option value="CS50 ddb (left-facing) Sticker">CS50 ddb (left-facing) Sticker</option>
+              <option value="CS50 Sticker">CS50 Sticker</option>
+              <option value=":) Tideman Unisex T-Shirt">:) Tideman Unisex T-Shirt</option>
+              <option value="Cs550 Stress Ball">Cs550 Stress Ball</option>
+            </select>
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+    </body>
+    <!--Js script-->
+    <script>
+      function myFunction(e)
+      {
+        window.location.replace("https://wa.me/?text=Hey%2C%20i%20would%20like%20to%20know%20if%20the%20" +document.getElementById("products").value+ "%20is%20available%3F")
+        alert("Redirecting You to WHATSAPP")
+      }
+    </script>
+</html>

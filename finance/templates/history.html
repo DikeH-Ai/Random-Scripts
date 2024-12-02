@@ -1,0 +1,32 @@
+ <!-- EXTEND LAYOUT-->
+{% extends "layout.html"%}
+
+{% block title %}
+    history
+{% endblock%}
+
+{% block main %}
+ <!--CREATE TABLE -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Transacted</th>
+            </tr>
+        </thead>
+         <!--LOOP THROUGH RESULT ROWS AND PRINT VALUES -->
+        <tbody>
+            {% for i in his %}
+                <tr>
+                    <td class="text-start">{{i["symbol"]}}</td>
+                    <td class="text-end">{{i["shares"]}}</td>
+                    <td class="text-end">{{i["price"]}}</td>
+                    <td class="text-end">{{i["date"]}}</td>
+                </tr>
+            {% endfor %}
+        <tbody>
+    </table>
+        </main>
+{% endblock%}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Create Invoice
+{% endblock %}
+
+{% block main %}
+<!-- my JS function -->
+<script>
+    function myfun(value)
+    {
+        var price;
+        price = value;
+        document.getElementById("total_amount").value = price * qty;
+
+    }
+  </script>
+
+  <!-- Modal -->
+  <div class="modal-header">
+    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Products</h1>
+  </div>
+  <br>
+  <div class="modal-body">
+    <form class="row g-3" method="post" action="/create_invoice">
+      <div class="row mb-3">
+        <label for="customer_name" class="form-label">Customer Name</label>
+        <input type="text" class="form-control" id="customer_name" name="customer_name">
+      </div>
+        <div class="col-auto">
+          <label class="visually-hidden" for="in_quantity">Quantity</label>
+          <input type="number" min="1" class="form-control" id="in_quantity" name="in_quantity" placeholder="Quantity: " onkeyup="return qty = this.value;">
+        </div>
+        <div class="col-auto">
+          <label class="visually-hidden" for="in_price">Price</label>
+          <div class="input-group">
+            <div class="input-group-text">$</div>
+            <input type="number" min="1" name="in_price" class="form-control" id="in_price" placeholder="Price" onkeyup="myfun(this.value)">
+        </div>
+
+        <div class="col-md-6">
+          <label for="amount" class="form-label">Amount</label>
+          <input id="total_amount" name="total_amount" class="form-control text-dark" type="text" disabled readonly>
+        </div>
+      </div>
+      <br>
+      <div class="col">
+          <select class="form-select" name="products" aria-label="Disabled select example">
+              <option selected>Product List</option>
+              {% for product in products %}
+                 <option value="{{product.name}}">{{product.name}}</option>
+              {% endfor %}
+          </select>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+{% endblock %} 

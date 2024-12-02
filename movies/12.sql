@@ -1,0 +1,1 @@
+SELECT title FROM (SELECT movies.title FROM movies JOIN stars ON movies.id = stars.movie_id WHERE person_id IN (SELECT id FROM people WHERE name LIKE "Helena Bonham Carter" UNION SELECT id FROM people WHERE name LIKE 'Johnny Depp') ORDER BY title) GROUP BY title HAVING COUNT(title) > 1;

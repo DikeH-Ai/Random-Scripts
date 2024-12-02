@@ -1,0 +1,10 @@
+--CREATE TABLE sales (rowid INTEGER ,name TEXT, qty INTEGER, price INTEGER, date TEXT, product TEXT, pnl INTEGER ,FOREIGN KEY (rowid) REFERENCES credentials(rowid));
+--.schema
+--SELECT * FROM products WHERE rowid = 1;
+--SELECT name,email,rowid FROM credentials;
+--DROP TABLE products;
+--SELECT Count(*) AS totalproducts FROM products WHERE rowid = 1;
+--SELECT * FROM products WHERE rowid = 1;
+--ALTER TABLE sales ADD pnl INTEGER;
+--DELETE FROM credentials WHERE rowid = 3;
+--SELECT pnl AS totalpnl FROM sales WHERE rowid = 1;

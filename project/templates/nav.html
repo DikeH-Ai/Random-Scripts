@@ -1,0 +1,93 @@
+<!-- Navigation code -->
+<div class="container-sm">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <a  href="{{ url_for('dashboard') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <h3 style="color: rgba(90, 110, 161, 0.582);">InventX</h3>
+      </a>
+      
+      <script>
+        function mult(value)
+        {
+          var x;
+          x = value;
+          document.getElementById("amount").value = x * y;
+        }
+      </script>
+  
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="document.getElementById('date').value = Date();">
+          Add Products
+        </button>
+        <!-- Modal -->
+        <div class="modal fade text-dark" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Products</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form class="row g-3" method="post" action="/addproducts">
+                  <div class="col-md-6">
+                    <label for="date" class="form-label">Date</label>
+                    <input id="date" class="form-control" type="text" value="" aria-label="Disabled input example" disabled readonly>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="productname" class="form-label">Product Name</label>
+                    <input type="text" class="form-control" id="productname" name="productname">
+                  </div>
+                    <div class="col-auto">
+                      <label class="visually-hidden" for="quantity">Quantity</label>
+                      <input type="number" min="1" class="form-control" id="quantity" name="quantity" placeholder="Quantity: " onkeyup=" return y = this.value;">
+                    </div>
+                    <div class="col-auto">
+                      <label class="visually-hidden" for="price">Price</label>
+                      <div class="input-group">
+                        <div class="input-group-text">$</div>
+                        <input type="number" min="1" name="price" class="form-control" id="price" placeholder="Price" onkeyup="mult(this.value)">
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="amount" class="form-label">Amount</label>
+                      <input id="amount" name="amount" class="form-control text-dark" type="text" disabled readonly>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">ADD</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+ 
+
+
+        <li><a href="{{ url_for('transaction') }}" class="nav-link px-2 link-light">Transactions</a></li>
+        
+        
+        
+        <li class="nav-item dropdown">
+            <a class="nav-link px-2 link-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Manage Products
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{ url_for('create_invoice') }}">Create Invoice</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('remove_product') }}">Remove Products</a></li>
+            </ul>
+      </ul>
+
+      <div class="col-md-3 text-end">
+        {% if session["user_id"] %}
+            <a  href="{{ url_for('logout') }}"><button type="button" class="btn btn-outline-primary me-2">Logout</button></a>
+        {% else %}
+            <a  href="{{ url_for('login') }}"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
+        {% endif %}
+        {% if session["user_id"] %}
+            <button type="button"  class="btn btn-outline-success">Welcome</button>
+        {% else %}
+            <a  href="{{ url_for('register') }}"><button type="button" class="btn btn-primary">Sign-up</button></a>
+        {% endif %}
+      </div>
+    </header>
+  </div>

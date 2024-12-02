@@ -1,0 +1,12 @@
+sort1 uses: Bubble sort
+
+How do you know?: When compared to sort 3, using sorted50000.txt as a reference, it performs more quickly, almost double the speed.
+
+sort2 uses: Merge sort
+
+How do you know?: beat the competition in the random10000.txt test.
+
+sort3 uses: Selection sort
+
+How do you know?:
+In terms of sorted50000.txt and reversed50000.txt, the best and worst scenario numbers are similar, and it also underperformed sort one in the sorted50000.txt test.

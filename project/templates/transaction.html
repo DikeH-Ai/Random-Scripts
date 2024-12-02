@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}
+    Transactions
+{% endblock %}
+
+{% block main %}
+<!-- list of all sales transactions -->
+<div class="table-responsive table-responsive-md">
+    <table class="table table-dark table-borderless table-hover">
+    <caption class="text-light">Transactions</caption>
+    <thead>
+      <tr>
+        <th scope="col">Customer name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Product</th>
+        <th scope="col">Date</th>
+        <th scope="col">Profit/Loss</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% if database %}
+            {% for database in database %}
+                <tr>
+                    <td>{{database.name}}</td>
+                    <td>{{database.qty}}</td>
+                    <td>{{database.price}}</td>
+                    <td>{{database.product}}</td>
+                    <td>{{database.date}}</td>
+                    <td>{{database.pnl}}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <h3>No Transactions</h3>
+        {% endif %}
+    </tbody>
+  </table>
+  </div>
+{% endblock %}

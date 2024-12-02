@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Remove product
+{% endblock %}
+
+{% block main %}
+<!-- remove product form -->
+  <!-- Modal -->
+  <div class="modal-header">
+    <h1 class="modal-title fs-5" id="staticBackdropLabel">Remove Product</h1>
+  </div>
+  <br>
+  <div class="modal-body">
+    <form class="row g-3" method="post" action="/remove_product">
+        <div class="col">
+            <select class="form-select" name="products" aria-label="Disabled select example">
+                <option selected>Product List</option>
+                {% for product in products %}
+                   <option value="{{product.name}}">{{product.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-auto">
+          <label class="visually-hidden" for="in_quantity">Quantity</label>
+          <input type="number" min="1" class="form-control" id="in_quantity" name="in_quantity" placeholder="Quantity: " >
+        </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Remove</button>
+      </div>
+    </form>
+  </div>
+{% endblock %} 

@@ -1,0 +1,11 @@
+Request User Input;
+If user input (x) is Less-than 0 OR Greater-than 4;
+    Go back to line 3
+Create a finte-loop (i) set to Iterate (x) times;
+//Right-Aligning
+    Create a nested finte-loop set to Iterate (-x) times;
+        print " ";
+//Print #
+    Create a nested finte-loop set to Iterate (i) times;
+        print #;
+    print a new-line;
