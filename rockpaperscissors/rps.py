@@ -27,11 +27,10 @@ def intro():
 def play(points: dict):
     print("ROCK PAPER SCISSORS shoot!")
     player = input("Chose your wepon [R]ock [P]aper [S]cissors: ").upper()
-    if player not in ['R', 'P', 'S']:
-        print("Invalid choice, try again.")
-        play(points)
-        return
-    computer = choice(['R', 'P', 'S'])
+    weapons = ['R', 'P', 'S']
+    if player not in weapons:
+        print("Invalid choice.")
+    computer = choice(weapons)
     print(f"Computer chose {computer}")
     if player == computer:
         print("It's a tie!")
